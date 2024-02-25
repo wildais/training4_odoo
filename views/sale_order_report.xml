@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_saleorder_document_inherit_day4" name="report_saleorder_document_inherit_day4" inherit_id="sale.report_saleorder_document">
+        <div id="informations" position="inside">
+
+            <!-- add origin -->
+            <div t-if="doc.origin" class="col-auto col-3 mw-100 mb-2">
+                <strong>Origin:</strong>
+                <br />
+                <span class="m-0" t-field="doc.origin" />
+            </div>
+        </div>
+
+        <!-- Add kolom produk di sebelum kolom description -->
+        <!-- nama kolom -->
+        <th name="th_description" position="before">
+            <th name="th_product_name" class="text-start">Product</th>
+        </th>
+
+        <!-- isi kolom -->
+        <td name="td_name" position="before">
+            <td name="td_product_name">
+                <span t-field="line.product_template_id" />
+            </td>
+        </td>
+        
+    </template>
+
+</odoo>

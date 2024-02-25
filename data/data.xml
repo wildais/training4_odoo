@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="training_class_sequence" model="ir.sequence">
+        <field name="name">Training Class</field>
+        <field name="code">training.class</field>
+        <field name="prefix">TC/%(year)s/%(month)s/</field>
+        <field name="padding">4</field>
+    </record>
+    
+
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="training_class_form_inherit_day4" model="ir.ui.view">
+        <field name="name">training.class.view.form.inherit</field>
+        <field name="model">training.class</field>
+        <field name="inherit_id" ref="training2.training_class_view_form"/>
+        <field name="arch" type="xml">
+            <!-- <field name="description" position="before">
+                <field name="second_description"></field>
+            </field> -->
+
+            <!-- <group name="kolom kiri" position="inside">
+                <field name="second_description"></field>               
+            </group> -->
+
+            <!-- Hide description -->
+            <!-- <field name="description" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field> -->
+
+            <xpath expr="//group/group[3]" position="inside">
+                <field name="second_description"></field>
+            </xpath>
+
+            <sheet position="after">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </sheet>
+            
+            <field name="mentor_id" position="attributes">
+                <attribute name="options">{'no_create':True, 'no_open':True}</attribute>
+            </field>
+
+            <field name="name" position="before">
+                <field name="number" force_save="1" readonly="1"/>
+            </field>
+
+            <sheet position="inside">
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_member" type="object" class="oe_stat_button" icon="fa-pencil" string="Member">
+                    </button>
+                </div>
+            </sheet>
+        </field>
+    </record>
+
+    <record id="training_class_tree_inherit_day4" model="ir.ui.view">
+        <field name="name">training.class.view.list.inherit</field>
+        <field name="model">training.class</field>
+        <field name="inherit_id" ref="training2.training_class_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="active" position="after">
+                <field name="state"></field>
+            </field>
+            <field name="name" position="before">
+                <field name="number"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="training_class_copy_action" model="ir.actions.act_window">
+        <field name="name">Training Class (Copy)</field>
+        <field name="res_model">training.class.copy</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="training_class_copy_menu"
+        name="Training Class (Copy)"
+        action="training_class_copy_action"
+        parent="training2.training_parent_menu"
+        sequence="12"/>
+    
+    <!-- Action window training class member -->
+    <record id="training_class_member_action" model="ir.actions.act_window">
+        <field name="name">Training Class Member</field>
+        <field name="res_model">training.class.member</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>Belum ada data</p>
+        </field>
+    </record>
+
+    <record id="training_class_member_view_tree" model="ir.ui.view">
+        <field name="name">training.class.member.view.tree</field>
+        <field name="model">training.class.member</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="hadir"/>
+            </tree>
+        </field>
+
+    </record>
+
+</odoo>
